@@ -51,12 +51,15 @@ class ordination:
 
 
 # main program ------------------------------
-start_time = time()
+def execute_quicksort():
+    start_time = time()
+    user=int(input("Enter the number of items: "))
+    obj=ordination(user)
+    print("QUICKSORT METHOD: ", obj.order_list())
 
-user=int(input("Enter the number of items: "))
-obj=ordination(user)
-print(obj.order_list())
+    elapsed_time = time() - start_time
+    print("Elapsed time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    print("Elapsed time: %.10f seconds." % elapsed_time)
 
-elapsed_time = time() - start_time
-print("Elapsed time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
-print("Elapsed time: %.10f seconds." % elapsed_time)
+# call function quicksort
+#execute_quicksort() # SI DESEA EJECUTAR QUICKSORT QUITE EL COMENTARIO INICIAL
