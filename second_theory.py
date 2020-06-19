@@ -39,19 +39,64 @@ class second_theory:
         return {'listA':qty_int,'listB':qty_float,'listC':qty_string}
 
 
-# main program ------------------------
-def execute_program():
+
+
+# Questions ------------------------
+def get_objects_list():
     obj=second_theory()
     quantities=obj.number_of_types()
     listA=quantities["listA"]
     listB=quantities["listB"]
     listC=quantities["listC"]
-    
     # generate my list of objects with 10000 elements
     objects_list=obj.random_list_objects(listA,listB,listC)
-    print(obj.random_list_objects(listA,listB,listC))
+    
+    return objects_list
 
-execute_program()
-#print("Second Random alphaNumeric String is ", random_alphaNumeric_string(6, 2))
-#print(round(random.random(), 4) )
+# separate the objects into different lists
+def lists(objects_list):
+    listA=[] # int
+    listB=[] # float
+    listC=[] # string
+     
+    for element in objects_list:
+        if type(element)==int:
+            listA.append(element)
+        elif type(element)==float:
+            listB.append(element)
+        elif type(element)==str:
+            listC.append(element)
 
+    return {'listA':listA,'listB':listB,'listC':listC}
+
+def search_value(list_name, search):
+    my_list=get_objects_list()
+    my_objects=lists(my_list)
+    listA=my_objects.get('listA')
+    listB=my_objects.get('listB')
+    listC=my_objects.get('listC')
+
+    # List is empty ? 
+
+
+
+# main program -------------------------------------------------------
+
+input_option=input("¿Qué desea hacer?: \n 1)Buscar un valor \n 2)Ordenar una lista \n : ")
+try:
+    if input_option=="1":
+        list_name=input("Escriba la inicial de la lista en la que desea buscar \n ejemplo: A, B, C \n : ")
+        if list_name=="A" or list_name=="a":
+            search=int(input("Valor que deseas buscar en la lista A: "))
+            search_value(list_name, search)
+        elif list_name=="B" or list_name=="b":
+            search=float(input("Valor que deseas buscar en la lista B: "))
+            search_value(list_name, search)
+        elif list_name=="C" or list_name=="c":
+            search=input("Valor que deseas buscar en la lista C: ")
+            search_value(list_name, search)
+        else:
+            print("Opción errónea")
+    
+except:
+    pass
