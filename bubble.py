@@ -36,4 +36,4 @@ def execute_bubble():
     print("Elapsed time: %.10f seconds." % elapsed_time)
     
 
-execute_bubble()
+#execute_bubble() # SI DESEA EJECUTAR BUBBLE QUITE EL COMENTARIO INICIAL
