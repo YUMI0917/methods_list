@@ -30,10 +30,10 @@ class second_theory:
         qty_float=0 # list B
         qty_string=0 # list C and D (char type not supported on python)
         total=0
-        while(total!=100):
-            qty_int=randint(1,100)
-            qty_float=randint(1,100)
-            qty_string=randint(1,100)
+        while(total!=10000):
+            qty_int=randint(1,10000)
+            qty_float=randint(1,10000)
+            qty_string=randint(1,10000)
             total=qty_int+qty_float+qty_string
             
         return {'listA':qty_int,'listB':qty_float,'listC':qty_string}
@@ -109,7 +109,52 @@ def search_value(list_name, search):
     elapsed_time = time() - start_time
     print("LISTA DE OBJETOS time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
 
+def order_values(option):
 
+    my_list=get_objects_list()
+    my_objects=lists(my_list)
+    listA=my_objects.get('listA') # option 1
+    listB=my_objects.get('listB') # option 2
+    listC=my_objects.get('listC') # option 3
+    # order
+    if option=="1":
+        start_time = time()
+        listA.sort()
+        print("Lista A ordenada: ",listA)
+        elapsed_time = time() - start_time
+        print("Lista A time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    elif option=="2":
+        start_time = time()
+        listB.sort()
+        print("Lista B ordenada: ", listB)
+        elapsed_time = time() - start_time
+        print("Lista B time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    elif option=="3":
+        start_time = time()
+        listC.sort()
+        print(listC)
+        elapsed_time = time() - start_time
+        print("Lista C time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    else:
+        print("¡No existe la opción que haz escrito!")
+
+    print("\n ----------------------------------------- \n")
+    for key, value in my_objects.items():
+        if key=="listA" and option=="1":
+            start_time = time()
+            print("Lista de Objetos: ",sorted(value))
+            elapsed_time = time() - start_time
+            print("Lista de Objetos time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+        elif key=="listB" and option=="2":
+            start_time = time()
+            print("Lista de Objetos: ",sorted(value))
+            elapsed_time = time() - start_time
+            print("Lista de Objetos time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+        elif key=="listC" and option=="3":
+            start_time = time()
+            print("Lista de Objetos: ",sorted(value))
+            elapsed_time = time() - start_time
+            print("Lista de Objetos time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
 
 # main program -------------------------------------------------------
 
@@ -128,6 +173,11 @@ try:
             search_value(list_name, search)
         else:
             print("Opción errónea")
+    elif input_option=="2":
+        type_order=input("Indique que tipo de lista desea ordenar \n ejemplo: 1)INT, 2)FLOAT, 3)STRING \n : ")
+        order_values(type_order) # int, float or string
+    else:
+        print("Ha elegido una opción que no existe")
     
 except ValueError:
     print("!El elemento buscado no se encuentra en la lista!")
