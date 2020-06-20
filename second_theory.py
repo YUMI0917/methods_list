@@ -4,7 +4,7 @@
 # Program: second_theory.py
 # Version: Python 3.8.2
 
-
+from time import time
 from random import * 
 import string
 import random
@@ -37,8 +37,6 @@ class second_theory:
             total=qty_int+qty_float+qty_string
             
         return {'listA':qty_int,'listB':qty_float,'listC':qty_string}
-
-
 
 
 # Questions ------------------------
@@ -75,8 +73,41 @@ def search_value(list_name, search):
     listA=my_objects.get('listA')
     listB=my_objects.get('listB')
     listC=my_objects.get('listC')
-
     # List is empty ? 
+    if list_name=="A" or list_name=="a":
+        start_time = time()
+        print("lista A :", listA, "\n ----------------------------------------- \n")
+        position=listA.index(search)
+        print("LISTA A => Elemento : ", search ," está en el index : ", position, " de la lista")
+        elapsed_time = time() - start_time
+        print("LISTA A time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    elif list_name=="B" or list_name=="b":
+        start_time = time()
+        print("lista B :", listB)
+        position=listB.index(search)
+        print("LISTA B => Elemento : ", search ," está en el index : ", position, " de la lista")
+        elapsed_time = time() - start_time
+        print("LISTA B time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    elif list_name=="C" or list_name=="c":
+        start_time = time()
+        print("lista C :", listC)
+        position=listC.index(search)
+        print("LISTA C => Elemento : ", search ," está en el index : ", position, " de la lista")
+        elapsed_time = time() - start_time
+        print("LISTA C time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
+    else:
+        print("El elemento buscado no se encuentra en la lista.")
+
+    print("\n ----------------------------------------- \n")
+    start_time = time()
+    for key, value in my_objects.items():
+        for element in value:
+            if element==search: # if the search is effective
+                my_search=value.index(element)
+
+    print("LISTA DE OBJETOS => Elemento : ", search ," está en el index : ", my_search , " de la lista")
+    elapsed_time = time() - start_time
+    print("LISTA DE OBJETOS time: ",round(float(elapsed_time*1000), 2), " milliseconds" ) # two decimals
 
 
 
@@ -98,5 +129,5 @@ try:
         else:
             print("Opción errónea")
     
-except:
-    pass
+except ValueError:
+    print("!El elemento buscado no se encuentra en la lista!")
